@@ -3,13 +3,15 @@ import React from "react";
 const TrafficLight = () => {
 
   const changeColor = (event) => {
-    const allColors = document.getElementsByClassName("traffic-light")[0].children
+    if (event.target.className.indexOf("actived") > 0) {
+      event.target.className = "lights-item"
+    } else {
+      const allColors = document.getElementsByClassName("traffic-light")[0].children
 
-    for (let i = 0; i < allColors.length; i++){
-      if (allColors[i].id == event.target.id) {
-        allColors[i].style.opacity="1"
-      } else {
-        allColors[i].style.opacity=""
+      for (let i = 0; i < allColors.length; i++) {
+        allColors[i].id == event.target.id
+          ? allColors[i].className = "lights-item actived"
+          : allColors[i].className = "lights-item"
       }
     }
   }
